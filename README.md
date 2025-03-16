@@ -125,16 +125,11 @@ QSW-M2116P(config-if-vlan)# ipv6 address dead:beef::/64
 
 I haven't tested it yet, but according to the datasheet the switches supports IPv4/v6 routing. To enable it:
 ```
-QSW-M2116P# conf t
 QSW-M2116P(config)# ip routing
-QSW-M2116P(config)# end
-QSW-M2116P# sh ip route
-Codes: C - connected, S - static
-       * - FIB route, D - DHCP installed route
-
-D* 0.0.0.0/0 [253/0] via 192.168.15.1, VLAN 15, 22:22:17
-C* 192.168.15.0/24 is directly connected, VLAN 15, 22:22:17
+QSW-M2116P(config)# ip route ... # Add static routes
 ```
+
+The configuration interface seems to only support static routes, but it should be possible to run an OSPF daemon (e.g. Quagga/ospfd) on the switch.
 
 ## Shell access
 
