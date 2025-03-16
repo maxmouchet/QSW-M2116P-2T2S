@@ -6,14 +6,21 @@ It is advertised as a layer 2 web-managed switch, but as shown in this document,
 
 This document is based on the latest [firmware](https://www.qnap.com/en/download?model=qsw-m2116p-2t2s&category=firmware) as of March 2025: 2.0.1.32808.
 
-It's inspired by the following posts, but they target different QNAP switches which run on OpenWRT, whereas the M2116P runs on another distribution ([Microchip IStaX](https://www.microchip.com/en-us/product/vsc6817)):
-- https://github.com/marcan/qsw-tools
-- https://stevetech.me/posts/qnap-switch-serial-console
-- https://www.reddit.com/r/homelab/comments/p4czkr/exploring_hidden_features_of_qnap_qswm21082s/
+## Overview
 
-## Datasheet
+The switch uses a [Microchip VSC7448-02 SparX-IV-80](https://www.microchip.com/en-us/product/vsc7448) switch chip ([datasheet](https://ww1.microchip.com/downloads/en/DeviceDoc/SparX-IV_L2_L3_Enterprise_Gigabit_Ethernet_Switches_Datasheet_00004426A.pdf)).
 
-The switch uses a [Microchip VSC7448-02 SparX-IV-80](https://www.microchip.com/en-us/product/vsc7448) switch chip. In addition to standard switching features, the [datasheet](https://ww1.microchip.com/downloads/en/DeviceDoc/SparX-IV_L2_L3_Enterprise_Gigabit_Ethernet_Switches_Datasheet_00004426A.pdf) tells us that the chip supports IP routing with up to 4k IPv4 routes and 1k IPv6 routes.
+The chip contains a 500MHz MIPS CPU on which a proprietary Linux distribution made by Microchip is running: [WebStaX](https://www.microchip.com/en-us/product/vsc6819). This system can be customized by the manufacturer. In thise case QNAP seems to stay relatively close to the base system, mainly adding a custom web server written in Go (`qnssweb`) providing the QNAP [QSS web interface](https://www.qnap.com/en-us/solution/qnap-switch-system).
+
+Microchip has a [documentation](https://ww1.microchip.com/downloads/aemDocuments/documents/UNG/ProductDocuments/UserGuides/UG1068-SW-Introduction-to-WebStaX-on-Linux.pdf
+) on building and customizing WebStaX [features](https://ww1.microchip.com/downloads/en/Appnotes/Ethernet_Switch_Software_Features_30010224.pdf), but unfortunately this requires access to proprietary sources that doesn't seem to be available publicly on the Internet.
+
+However the system stays pretty open:
+- Obtaining a root shell is trivial
+- The firmware image is not encrypted
+- The MIPS toolchain seems to be publicly [available](https://github.com/microchip-ung/mesa/releases) (not tested yet)
+
+In addition to these OS-level features, the chip itself offers more features than QNAP advertises for the switch. In particular it supports hardware IP routing with up to 4k IPv4 routes and 1k IPv6 routes, which is very helpful for inter-VLAN routing.
 
 ### `show version` dump
 
@@ -268,4 +275,11 @@ The list of the extracted files is provided in [`QSW-M2116P-2.0.1.32808.img.extr
 - Cross-compile Quagga/ospfd for the switch and try to run OSPF
 - Allow direct /bin/sh access via SSH instead of icli (shell hardcoded in dropbear binary?)
 - sflow
+
+## Related works
+
+It's inspired by the following posts, but they target different QNAP switches which run on OpenWRT, whereas the M2116P runs on another distribution ([Microchip IStaX](https://www.microchip.com/en-us/product/vsc6817)):
+- https://github.com/marcan/qsw-tools
+- https://stevetech.me/posts/qnap-switch-serial-console
+- https://www.reddit.com/r/homelab/comments/p4czkr/exploring_hidden_features_of_qnap_qswm21082s/
 
