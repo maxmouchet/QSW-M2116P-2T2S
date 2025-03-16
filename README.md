@@ -304,6 +304,25 @@ It would be really cool if the switch supported a routing protocol like OSPF. Ac
 
 In absence of the sources, we can still try to cross-compile Quagga/ospfd and run it on the switch. The switch chip appears to provide a [switchdev](https://docs.kernel.org/networking/switchdev.html) driver for Linux, but it's unclear if just adding routes to the kernel will automatically configure L3 offload (as opposed to adding routed via `icli`).
 
+### Fan control
+
+Can use QNAP `hal_app`, simlar to QNAP NAS, from https://www.reddit.com/r/qnap/comments/oq2r8n/qnap_qm2_loud_fan_noise_solved/:
+```
+# RPM
+/ # hal_app --se_sys_get_fan enc_sys_id=root,obj_index=0
+enc_sys_get_fan(2631):fan index = 0,ret = 0,fan = 5212 rpm,fan_fail = 0
+/ # hal_app --se_sys_get_fan enc_sys_id=root,obj_index=1
+enc_sys_get_fan(2631):fan index = 1,ret = 0,fan = 5335 rpm,fan_fail = 0
+
+# PWM
+/ # hal_app --se_sys_get_fan_pwm enc_sys_id=root,obj_index=0
+enc_sys_get_fan_pwm(2689):fan index = 0,ret = 0,fan_pwm = 159
+/ # hal_app --se_sys_get_fan_pwm enc_sys_id=root,obj_index=1
+enc_sys_get_fan_pwm(2689):fan index = 1,ret = 0,fan_pwm = 159
+```
+
+Can we do the same via the Microchip APIs?
+
 ## Related works
 
 It's inspired by the following posts, but they target different QNAP switches which run on OpenWRT, whereas the M2116P runs on another distribution ([Microchip IStaX](https://www.microchip.com/en-us/product/vsc6817)):
