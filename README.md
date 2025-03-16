@@ -201,6 +201,19 @@ devtmpfs                249.2M         0    249.2M   0% /dev
 ubi0:switch              19.9M     72.0K     18.8M   0% /switch
 overlay                 640.0K    640.0K         0 100% /
 
+/ # cat /proc/mtd
+dev:    size   erasesize  name
+mtd0: 00040000 00010000 "RedBoot"
+mtd1: 00010000 00010000 "conf"
+mtd2: 01400000 00010000 "linux"
+mtd3: 01400000 00010000 "linux.xx"
+mtd4: 01780000 00010000 "rootfs_data"
+mtd5: 00010000 00010000 "FIS_directory"
+mtd6: 00010000 00010000 "RedBoot_config"
+mtd7: 00010000 00010000 "Redundant_FIS"
+mtd8: 00a00000 00010000 "split_linux_lo"
+mtd9: 00a00000 00010000 "split_linux_hi"
+
 / # cat /proc/cpuinfo
 system type             : Jaguar2 Cu8-Sfp16 PCB110 Reference Board
 machine                 : Jaguar2 Cu8-Sfp16 PCB110 Reference Board
