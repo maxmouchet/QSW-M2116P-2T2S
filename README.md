@@ -262,9 +262,10 @@ The list of the extracted files is provided in [`QSW-M2116P-2.0.1.32808.img.extr
 ## Todo
 
 - IP routing testing
-- Cross-compile Quagga/ospfd for the switch and try to run OSPF
 - Customize the firmware (without access to the source?)
   - https://ww1.microchip.com/downloads/aemDocuments/documents/UNG/ProductDocuments/UserGuides/UG1068-SW-Introduction-to-WebStaX-on-Linux.pdf
+  - OSPF natively supported by WebStaX (https://ww1.microchip.com/downloads/en/Appnotes/Ethernet_Switch_Software_Features_30010224.pdf) but can it be enabled without access to the proprietary sources?
+- Cross-compile Quagga/ospfd for the switch and try to run OSPF
 - Allow direct /bin/sh access via SSH instead of icli (shell hardcoded in dropbear binary?)
 - sflow
 
