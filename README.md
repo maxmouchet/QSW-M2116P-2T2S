@@ -306,7 +306,7 @@ In absence of the sources, we can still try to cross-compile Quagga/ospfd and ru
 
 ### Fan control
 
-Can use QNAP `hal_app`, simlar to QNAP NAS, from https://www.reddit.com/r/qnap/comments/oq2r8n/qnap_qm2_loud_fan_noise_solved/:
+Can use QNAP `hal_app`, similar to QNAP NASes, from https://www.reddit.com/r/qnap/comments/oq2r8n/qnap_qm2_loud_fan_noise_solved/:
 ```
 # RPM
 / # hal_app --se_sys_get_fan enc_sys_id=root,obj_index=0
