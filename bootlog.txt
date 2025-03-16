@@ -1,0 +1,68 @@
+center_dly....
+center_dly bytelane : 00000000
+center_dly start : 00000365
+center_dly before DQS dly : 00000006
+center_dly after DQS dly : 00000368
+center_dly....
+center_dly bytelane : 00000001
+center_dly start : 00000365
+center_dly before DQS dly : 00000006
+center_dly after DQS dly : 00000368
+check_ok
++M25PXX : Init device with JEDEC ID 0xC2201A.
+Unknown board: PHY 00?
+Unknown board board detected (VSC7468 Rev. D).
+
+RedBoot(tm) bootstrap and debug environment [ROMRAM]
+Non-certified release, version 1_6_build202011271809-c7d6d80 - built 18:10:08, Nov 27 2020
+
+Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009
+Free Software Foundation, Inc.
+RedBoot is free software, covered by the eCos license, derived from the
+GNU General Public License. You are welcome to change it and/or distribute
+copies of it under certain conditions. Under the license terms, RedBoot's
+source code and full license terms must have been made available to you.
+Redboot comes with ABSOLUTELY NO WARRANTY.
+
+Platform: VCore-III (MIPS32 24KEc) JAGUAR2_C
+RAM: 0x80000000-0xa0000000 [0x80037a60-0x9ffd0ffc available]
+FLASH: 0x40000000-0x43ffffff, 1024 x 0x10000 blocks
+== Executing boot script in 3.000 seconds - enter ^C to abort
+RedBoot> diag -p
+RedBoot> fis load -x linux
+MD5 signature validated
+Stage1: 0x80100000, length 7942943 bytes
+Initrd: 0x80900000, length 204800 bytes
+Kernel command line: init=/usr/bin/stage2-loader loglevel=4 image=mfi
+RedBoot> exec
+TOM Now booting linux kernel:
+ Base address 0x80080000 Entry 0x80100000
+ Cmdline : init=/usr/bin/stage2-loader loglevel=4 image=mfi
+ Active fis: linux
+00:00:00 Stage 1 booted. Starting stage2 boot @ 810 ms
+00:00:01 Loading stage2 from NOR flash partition 'linux'
+00:00:28 Added 4096 bytes of entropy to /dev/urandom
+00:00:28 Overall: 28129 ms, ubifs = 405 ms, squash mount: 73 ms, rootfs 18370568 bytes read in 11689 ms (1534 KiB/s)
+00:00:40 Starting application...
+Using existing mount point for /switch/
+Starting hal application...
+
+Press ENTER to get startedPOE HW_MODEL: 24
+POE FW_VERSION: 3.5.2
+
+Service "poe" of type = "oneshot" with PID = 124 exited with return value 0.
+2025/03/16 16:14:44 Init Config  ...
+2025/03/16 16:14:48 Init Config OK
+2025/03/16 16:14:55 Version:2.0.1 Build:2024-05-07T13:28:47+08:00 Arch:mipsle
+2025/03/16 16:14:55 Listen config.Server.HttpPort: 80
+2025/03/16 16:14:55 model Init...
+2025/03/16 16:14:57 InitKey ...
+2025/03/16 16:14:57 Read Key ...
+2025/03/16 16:14:57 Init Auth OK
+2025/03/16 16:14:57 model :QSW-M2116P-2T2S
+2025/03/16 16:14:58 system Init ...
+2025/03/16 16:14:58 IP Init ...
+2025/03/16 16:14:59 startQfindAgent ...
+2025/03/16 16:14:59 HTTP Listen And Server
+2025/03/16 16:14:59 HTTPS Listen And Server
+2025/03/16 16:15:00 Start Qfinder Agent OK
