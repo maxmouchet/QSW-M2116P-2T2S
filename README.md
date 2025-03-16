@@ -387,6 +387,52 @@ Starting hal application...
 corrupted size vs. prev_size while consolidating
 ```
 
+### MFI (Modular Firmware Image)
+
+See https://www.microchip.com/content/dam/mchp/documents/UNG/ApplicationNotes/ApplicationNotes/AN1163-WebstaX-Customization.pdf.
+
+```bash
+hexdump QSW-M2116P-2.0.1.32808.img | grep 'd5de edd4'
+# 0001000 d5de edd4 4c4d 987b 0002 0000 005c 0000 # 0001000 => 4096
+dd if=QSW-M2116P-2.0.1.32808.img ibs=4096 skip=1 of=mfi.img
+./mesa/mesa/demo/mfi.rb --dump --input mfi.img
+```
+
+```
+Stage1
+  Version:2
+  Magic1:0xedd4d5de, Magic2:0x987b4c4d, HdrLen:92, ImgLen:2486100
+  Machine:jaguar2c, SocName:jaguar2, SocNo:7, SigType:1
+  Tlv Type:Kernel(0), Data Length:2271572
+  Tlv Signature(1),   Data Length:16 (validated)
+  Tlv Initrd(2),      Data Length:204800
+  Tlv KernelCmd(3),   Data Length:48
+  Tlv Metadata(4),    Data Length:82
+  Tlv License(5),     Data Length:9396
+Stage2 - Index:0
+  Tlv FsElement(2), Data Length:5615287
+  MD5(1), Length:16 Data: fb0d3791eeaa110f58c29c1a839369e2 (validated)
+    Name:                           rootfs
+    Version:                        2022.03
+    License:                        Found
+    Content file name:              wd-istax_sparxIV_80_24-jaguar2_pcb110.squashfs
+    Content (squashfs) file length: 5521408
+Stage2 - Index:1
+  Tlv FsElement(2), Data Length:12165194
+  MD5(1), Length:16 Data: a7ed34129a32ace697db183517193841 (validated)
+    Name:                           vtss
+    Version:                        79525bf+
+    Content file name:              istax_sparxIV_80_24.app-rootfs
+    Content (squashfs) file length: 12165120
+Stage2 - Index:2
+  Tlv FsElement(2), Data Length:589899
+  MD5(1), Length:16 Data: 3976f44303cb0e43fffd66c109c232f0 (validated)
+    Name:                           vtss-web-ui
+    Version:                        79525bf+
+    Content file name:              vtss-www-rootfs.squashfs
+    Content (squashfs) file length: 589824
+```
+
 ## Related works
 
 It's inspired by the following posts, but they target different QNAP switches which run on OpenWRT, whereas the M2116P runs on another distribution ([Microchip IStaX](https://www.microchip.com/en-us/product/vsc6817)):
