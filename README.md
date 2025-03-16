@@ -294,6 +294,29 @@ PID   USER     COMMAND
   355 root     [kworker/u2:1-ev]
   357 root     /bin/sh
   361 root     ps aux
+
+/ # ls -lh /switch
+total 596K
+drwx------    2 root     root         160 Jan  1  1970 cert_indexes
+-rw-------    1 root     root         805 Jan  1  1970 dropbear_rsa_host_key
+-rw-r--r--    1 root     root        1.7K Mar  4 16:06 efcfg.json_bk
+drwxr-xr-x    2 root     root         592 Mar 16 10:36 icfg
+drwxr-xr-x    3 root     root         304 Mar  4 16:11 qnss_web
+---------T    1 root     root         512 Mar 16 10:36 random-seed
+-rw-r--r--    1 root     root      512.0K Mar 16 10:36 stackconf
+-rw-r--r--    1 root     root           0 Jan  1  1970 startup-config-created
+-rw-r--r--    1 root     root       64.0K Mar 16 10:25 syslog
+-rwxr-xr-x    1 root     root          82 Nov  4  2020 tget.sh
+-rw-------    1 root     root         675 Mar 16 10:37 vtss_snmpd.conf
+
+/ # ls -lh /switch/icfg
+total 68K
+-rw-r--r--    1 root     root       47.2K Mar 16 10:25 crashfile
+lrwxrwxrwx    1 root     root          31 Mar 16 10:36 default-config -> /switch/icfg/new-default-config
+-rw-r--r--    1 root     root          12 May 26  2021 macaddr
+-rw-r--r--    1 root     root        3.5K Mar 16 10:36 new-default-config
+-rw-r--r--    1 root     root        6.8K Mar 15 17:15 startup-config
+-rw-r--r--    1 root     root          61 Mar  6 20:27 tzlocaion
 ```
 
 ## Extracting the firmware
