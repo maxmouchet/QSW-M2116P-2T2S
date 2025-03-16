@@ -65,6 +65,34 @@ PoE Version      : HW Ver.:0, Prod:24, sw ver:352, param:0, build:30, internal s
 ---
 ```
 
+```
+QSW-M2116P# debug show firmware mfi-info
+ImageId      SectionId    Attr.Id      Name                                     Value
+-----------  -----------  -----------  ---------------------------------------  ------------------
+0            0            0            Image type name                          Bootloader
+0            0            1            Image Name                               RedBoot
+0            0            2            Image Version                            version 1_6_build202011271809-c7d6d80
+0            0            3            Image Built date                         18:10:08, Nov 27 2020
+0            0            4            Image Code revision
+1            0            0            Image type name                          Active Firmware
+1            0            1            Image Name                               linux
+1            0            2            Image Version                            2.0.1.32808
+1            0            3            Image Built date                         2024-05-31T16:00:51+08:00
+1            0            4            Image Code revision                      79525bf+
+1            1            0            Section Name                             rootfs
+1            1            1            Section Version                          2022.03
+1            1            2            Section SQUASHFS contents length         5521408
+1            1            3            Section File-name                        wd-istax_sparxIV_80_24-jaguar2_pcb110.squashfs
+1            2            0            Section Name                             vtss
+1            2            1            Section Version                          79525bf+
+1            2            2            Section SQUASHFS contents length         12165120
+1            2            3            Section File-name                        istax_sparxIV_80_24.app-rootfs
+1            3            0            Section Name                             vtss-web-ui
+1            3            1            Section Version                          79525bf+
+1            3            2            Section SQUASHFS contents length         589824
+1            3            3            Section File-name                        vtss-www-rootfs.squashfs
+```
+
 
 ## CLI management
 
