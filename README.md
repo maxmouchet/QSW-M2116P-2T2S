@@ -323,6 +323,34 @@ enc_sys_get_fan_pwm(2689):fan index = 1,ret = 0,fan_pwm = 159
 
 Can we do the same via the Microchip APIs?
 
+### QEMU userland emulation
+
+```bash
+apt install binfmt-support qemu-user-static
+docker run --rm -it -v $(pwd):/data binwalk -x dtb --carve --extract --directory /data/extractions /data/QSW-M2116P-2.0.1.32808.img
+mkdir -p /data/mnt/squashfs1 /data/mnt/squashfs2 /data/mnt/squashfs3 /data/mnt/overlay/upper /data/mnt/overlay/work /data/mnt/overlay/merged
+unsquashfs -d /data/mnt/squashfs1 extractions/QSW-M2116P-2.0.1.32808.img_20270812_squashfs.raw
+unsquashfs -d /data/mnt/squashfs2 extractions/QSW-M2116P-2.0.1.32808.img_2275820_squashfs.raw
+unsquashfs -d /data/mnt/squashfs3 extractions/QSW-M2116P-2.0.1.32808.img_2584041_squashfs.raw
+unsquashfs -d /data/mnt/squashfs4 extractions/QSW-M2116P-2.0.1.32808.img_8105575_squashfs.raw
+cp $(which qemu-mipsel-static) /data/mnt/squashfs2/$(which qemu-mipsel-static)
+mount -t overlay overlay -o lowerdir=/data/mnt/squashfs1:/data/mnt/squashfs2:/data/mnt/squashfs3:/data/mnt/squashfs4,upperdir=/data/mnt/overlay/upper,workdir=/data/mnt/overlay/work /data/mnt/overlay/merged
+chroot /data/mnt/overlay/merged/ qemu-mipsel-static /usr/bin/switch_app
+```
+
+```
+12:36:43 Starting application...
+Unable to open I2C bus 0: No such file or directory
+Using existing mount point for /switch/
+URANDOM: Failed to open /dev/urandom: No such file or directory
+W conf 12:36:43 15400/conf_board_start#490: Warning: MAC address not set, using random: 02:00:C1:33:44:55
+W conf 12:36:43 15400/conf_sec_read#894: Warning: illegal cookie[0] 0x00000000
+W conf 12:36:43 15400/conf_sec_read#894: Warning: illegal cookie[1] 0x00000000
+Starting hal application...
+/sys/class/uio: No such file or directory
+corrupted size vs. prev_size while consolidating
+```
+
 ## Related works
 
 It's inspired by the following posts, but they target different QNAP switches which run on OpenWRT, whereas the M2116P runs on another distribution ([Microchip IStaX](https://www.microchip.com/en-us/product/vsc6817)):
