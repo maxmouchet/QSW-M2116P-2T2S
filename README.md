@@ -205,8 +205,8 @@ overlay                 640.0K    640.0K         0 100% /
 dev:    size   erasesize  name
 mtd0: 00040000 00010000 "RedBoot"
 mtd1: 00010000 00010000 "conf"
-mtd2: 01400000 00010000 "linux"
-mtd3: 01400000 00010000 "linux.xx"
+mtd2: 01400000 00010000 "linux"    # current firwmare image
+mtd3: 01400000 00010000 "linux.xx" # previous firmware image (?)
 mtd4: 01780000 00010000 "rootfs_data"
 mtd5: 00010000 00010000 "FIS_directory"
 mtd6: 00010000 00010000 "RedBoot_config"
