@@ -136,8 +136,6 @@ QSW-M2116P(config)# ip routing
 QSW-M2116P(config)# ip route ... # Add static routes
 ```
 
-The configuration interface seems to only support static routes, but it should be possible to run an OSPF daemon (e.g. Quagga/ospfd) on the switch.
-
 ## Shell access
 
 To obtain a root shell, from the console port (`platform` command doesn't seem to be available over SSH):
@@ -269,12 +267,14 @@ The list of the extracted files is provided in [`QSW-M2116P-2.0.1.32808.img.extr
 ## Todo
 
 - IP routing testing
-- Customize the firmware (without access to the source?)
-  - https://ww1.microchip.com/downloads/aemDocuments/documents/UNG/ProductDocuments/UserGuides/UG1068-SW-Introduction-to-WebStaX-on-Linux.pdf
-  - OSPF natively supported by WebStaX (https://ww1.microchip.com/downloads/en/Appnotes/Ethernet_Switch_Software_Features_30010224.pdf) but can it be enabled without access to the proprietary sources?
-- Cross-compile Quagga/ospfd for the switch and try to run OSPF
 - Allow direct /bin/sh access via SSH instead of icli (shell hardcoded in dropbear binary?)
 - sflow
+
+### Dynamic routing
+
+It would be really cool if the switch supported a routing protocol like OSPF. According the [IStaX specification](https://ww1.microchip.com/downloads/aemDocuments/documents/UNG/ProductDocuments/UserGuides/IStax_software_product_specification_30010225.pdf) OSPF is supported by the OS for this switch chip, but the feature doesn't seem to be enabled when building the OS.
+
+In absence of the sources, we can still try to cross-compile Quagga/ospfd and run it on the switch. The switch chip appears to provide a [switchdev](https://docs.kernel.org/networking/switchdev.html) driver for Linux, but it's unclear if just adding routes to the kernel will automatically configure L3 offload (as opposed to adding routed via `icli`).
 
 ## Related works
 
