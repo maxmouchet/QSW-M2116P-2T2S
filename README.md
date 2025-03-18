@@ -13,7 +13,7 @@ The switch uses a [Microchip VSC7448-02 SparX-IV-80](https://www.microchip.com/e
 The chip contains a 500MHz MIPS CPU on which a proprietary Linux distribution made by Microchip is running: [WebStaX](https://www.microchip.com/en-us/product/vsc6819). This system can be customized by the manufacturer. In thise case QNAP seems to stay relatively close to the base system, mainly adding a custom web server written in Go (`qnssweb`) providing the QNAP [QSS web interface](https://www.qnap.com/en-us/solution/qnap-switch-system).
 
 Microchip has a [documentation](https://ww1.microchip.com/downloads/aemDocuments/documents/UNG/ProductDocuments/UserGuides/UG1068-SW-Introduction-to-WebStaX-on-Linux.pdf
-) on building and customizing WebStaX [features](https://ww1.microchip.com/downloads/en/Appnotes/Ethernet_Switch_Software_Features_30010224.pdf), but unfortunately this requires access to proprietary sources that doesn't seem to be available publicly on the Internet.
+) on building and customizing WebStaX [features](https://ww1.microchip.com/downloads/en/Appnotes/Ethernet_Switch_Software_Features_30010224.pdf), but unfortunately this requires access to proprietary sources which [costs](https://www.microchipdirect.com/dev-tools/VSC6817SDK) $100k.
 
 However the system stays pretty open:
 - Obtaining a root shell is trivial
