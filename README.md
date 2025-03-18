@@ -437,6 +437,7 @@ Stage2 - Index:2
 
 - https://github.com/vtss/flash_builder
 - https://ww1.microchip.com/downloads/aemDocuments/documents/ENT/ApplicationNotes/ApplicationNotes/ENT-AN1144-4.00-VPPD-04306.pdf
+- https://ww1.microchip.com/downloads/secure/aemDocuments/documents/UNG/ApplicationNotes/ApplicationNotes/AN1289-SW_Configuration_Guide_Flash.pdf
 
 ## Related works
 
