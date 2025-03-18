@@ -433,6 +433,11 @@ Stage2 - Index:2
     Content (squashfs) file length: 589824
 ```
 
+### Flash layout
+
+- https://github.com/vtss/flash_builder
+- https://ww1.microchip.com/downloads/aemDocuments/documents/ENT/ApplicationNotes/ApplicationNotes/ENT-AN1144-4.00-VPPD-04306.pdf
+
 ## Related works
 
 It's inspired by the following posts, but they target different QNAP switches which run on OpenWRT, whereas the M2116P runs on another distribution ([Microchip IStaX](https://www.microchip.com/en-us/product/vsc6817)):
